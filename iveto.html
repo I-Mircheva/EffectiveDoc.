@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Open doors day :)</title>
+  <script src="//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js"></script>
+  <script src="//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js"></script>
+  <script src="//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js"></script>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet prefetch" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+  <style class="cp-pen-styles">
+  /* body {
+      background-color: #1d1d1d;
+      color: #989898;
+      margin: 0 10px;
+      font-size: 16px;
+      margin-top: 40px;
+      font-family: 'Signika Negative', sans-serif;
+    }
+    */
+  
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .product {
+    display: inline-block;
+    color: white;
+    font-size: 60px;
+    font-weight: 300;
+  }
+  
+  .suffix {
+    display: inline-block;
+    font-size: 60px;
+    font-weight: 700;
+    color: #00ccff;
+    font-weight: 700;
+  }
+  
+  .tagline {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 36px;
+  }
+  
+  #demo {
+    position: initial;
+    visibility: visible;
+    opacity: 0;
+    background-color: #1d1d1d;
+    color: #989898;
+    font-size: 16px;
+    margin-top: 40px;
+    font-family: 'Signika Negative', sans-serif;
+  }
+  
+  #controls {
+    margin-top: 35px;
+    text-align: center;
+  }
+  
+  .slider {
+    width: 420px;
+    margin: auto;
+  }
+  
+  .sliderValues {
+    margin: 10px;
+  }
+  
+  .sliderValues span {
+    font-size: 24px;
+  }
+  
+  #timeScaleSlider {
+    width: 260px;
+  }
+  
+  button {
+    padding: 0.6em;
+    margin: 20px 0 10px 0;
+    font-size: 13px;
+    -moz-box-shadow: 0px 10px 14px -7px #2696bf;
+    -webkit-box-shadow: 0px 10px 14px -7px #2696bf;
+    box-shadow: 0px 10px 14px -7px #2696bf;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1b92bd), color-stop(1, #3bd4eb));
+    background: -moz-linear-gradient(top, #1b92bd 5%, #3bd4eb 100%);
+    background: -webkit-linear-gradient(top, #1b92bd 5%, #3bd4eb 100%);
+    background: -o-linear-gradient(top, #1b92bd 5%, #3bd4eb 100%);
+    background: -ms-linear-gradient(top, #1b92bd 5%, #3bd4eb 100%);
+    background: linear-gradient(to bottom, #1b92bd 5%, #3bd4eb 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#1b92bd', endColorstr='#3bd4eb', GradientType=0);
+    background-color: #1b92bd;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    border: 2px solid #1995e8;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #112d36;
+  }
+  
+  li {
+    display: inline-block;
+    margin-right: 25px;
+    color: #aaa;
+  }
+  
+  .ui-widget-content {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .link {
+    display: inline-block;
+    padding-top: 20px;
+    text-decoration: none;
+  }
+  
+  a.link:link,
+  a {
+    color: #ffffff;
+  }
+  
+  a.link:visited {
+    color: #ffffff;
+  }
+  
+  a.link:hover {
+    color: #ffffff;
+  }
+  
+  #txtContainer {
+    display: inline-block;
+  }
+  
+  .txt {
+    font: 26px monospace;
+    position: absolute;
+    color: #afafaf;
+    font-weight: bold;
+  }
+  
+  #demoBackground {
+    position: absolute;
+    background-color: #000;
+    overflow: hidden;
+    width: 692px;
+    height: 70px;
+    visibility: hidden;
+  }
+  
+  #logo {
+    position: absolute;
+    background: url(https://goo.gl/XLqZrH) no-repeat;
+    height: 60px;
+    width: 60px;
+    top: 6px;
+  }
+  
+  #timelinelite {
+    position: absolute;
+    background: url(https://goo.gl/XLqZrH) no-repeat;
+    left: 50px;
+    top: 16px;
+    width: 180px;
+    height: 33px;
+    overflow: hidden;
+  }
+  
+  #tagline {
+    position: absolute;
+    left: 236px;
+    top: 24px;
+    width: 306px;
+    height: 26px;
+  }
+  
+  #tagline span {
+    position: relative;
+    display: inline-block;
+  }
+  
+  #frame2 {
+    background-color: #EAE8E7;
+    height: 298px;
+  }
+  
+  #demoBackground {
+    position: relative;
+    background-color: #000;
+    overflow: hidden;
+    /*width: 692px;*/
+    height: 298px;
+    width: 100%;
+    visibility: hidden;
+  }
+  
+  #txtContainer {
+    position: absolute;
+    left: 25%;
+    /*top: 14px;*/
+  }
+  
+  .txt {
+    font: 46px monospace;
+    position: absolute;
+    color: #afafaf;
+    font-weight: bold;
+    left: 0px;
+    top: 0;
+  }
+
+  </style>
+</head>
+
+<body>
+  <link href='//fonts.googleapis.com/css?family=Signika+Negative:300,400,700' rel='stylesheet' type='text/css' />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+
+  <!-- 
+  <div id="demoBackground" style="visibility: hidden;">
+    <div id="logo"></div>
+    <div id="timelinelite"></div>
+    <div id="tagline"><span><img src="https://goo.gl/XLqZrH" width="61" height="26"></span><span><img src="https://goo.gl/XLqZrH" width="35" height="26"></span><span><p>Opa</p></span><span><img src="https://goo.gl/XLqZrH" width="27" height="26"></span><span><img src="https://goo.gl/XLqZrH" width="49" height="26"></span><span><img src="https://goo.gl/XLqZrH" width="83" height="26"></span>
+    </div>
+  </div> -->
+
+  <div id='bg' height="298px" style="position: relative">
+    <img id='tues-image' height="298px" src="http://www.elsys-bg.org/wp-content/themes/elsys/images/bg/rotate.php">
+    <img id='tues-image-grey' height="298px" style="position: absolute; visibility: hidden;" src="http://i1383.photobucket.com/albums/ah303/xXCrazyVoopyXx/tues_blackwhite_zps0ilw2q1e.jpg">
+    <img id='grunge-effect' height="298px" width="100%" style="position: absolute; visibility: hidden;" src="https://designshack.net/wp-content/uploads/imagetreatments-texture3.png">
+  </div>
+  <!--   <img id='tues-image' height="298px" style="position: absolute; visibility: hidden;" src="https://i.imgsafe.org/728af7edb7.jpg">
+  <img id='tues-image-grey' height="298px" style="position: absolute; visibility: hidden;" src="http://i1383.photobucket.com/albums/ah303/xXCrazyVoopyXx/tues_blackwhite_zps0ilw2q1e.jpg">
+  <img id='grunge-effect' height="298px" width="100%" style="position: absolute; visibility: hidden;" src="https://designshack.net/wp-content/uploads/imagetreatments-texture3.png">
+ -->
+  <div id='frame2' style="display: none;">
+    <div id="demoBackground">
+      <div id="txtContainer"></div>
+    </div>
+  </div>
+
+  <div id="demo">
+    <div class="product" id="timeline_txt">Welcome to</div>
+    <div class="suffix" id="lite_txt">TUES !!!</div>
+    <div id="txtContainer" style="text-align: center;"></div>
+    <ul style="text-align:left; width:780px; margin:auto">
+      <li>//Развитие</li>
+      <li>//Практика</li>
+      <li>//Подготовка</li>
+      <li>//Израстване</li>
+      <li>//Бъдеще</li>
+      <li>
+        <button><a href='http://www.elsys-bg.org/doors-open-day/'>Добре дошли!</a></button>
+      </li>
+    </ul>
+    <div id="controls">
+      <div class="sliderValues">Изминали: <span id="time"></span>сек / Прогрес: <span id="progress"></span></div>
+      <div class="slider" id="progressSlider"></div>
+      <button id="playBtn">Пусни!</button>
+      <button id="pauseBtn">Спри!</button>
+      <button id="reverseBtn">На обратно!</button>
+
+      <div style="text-align:left; width:420px; margin:auto">
+        <div class="slider" id="timeScaleSlider" style="display:inline-block"></div>
+        <div class="sliderValues" style="display:inline-block">Скорост: <span id="timeScale">1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <!-- <script src="//greensock.com/js/src/utils/SplitText.min.js"></script> -->
+  <script src="//s3-us-west-2.amazonaws.com/s.cdpn.io/16327/jquery.ui.touch-punch.js"></script>
+  <script src="/iveto.js"></script>
+  <script>
+  window.onload = function() {
+    firstFrame();
+
+    function firstFrame() {
+      var tuesImgGrey = document.getElementById('tues-image-grey');
+      tuesImgGrey.style.visibility = 'visible';
+      tuesImgGrey.style.opacity = 0;
+      tuesImgGrey.style.top = '0px';
+      tuesImgGrey.style.left = '0px';
+      grunge = document.getElementById('grunge-effect');
+      grunge.style.visibility = 'visible';
+      grunge.style.top = '0px';
+      grunge.style.left = '0px';
+      grunge.style.opacity = 0;
+      var tl1 = new TimelineMax({});
+      tl1.add(TweenMax.to(tuesImgGrey, 3, {
+        opacity: 1
+      }));
+      tl1.add(TweenMax.to(grunge, 3, {
+        opacity: 1,
+        onComplete: function() {
+          start(0);
+        }
+      }));
+      var numberRainfall = 30;
+
+      function start(counter) {
+        if (counter === numberRainfall - 1) {
+          var tl1 = new TimelineMax({
+            onComplete: secondFrame
+          });
+          tl1.add(TweenMax.to(tuesImgGrey, 2, {
+            opacity: 1
+          }));
+          tl1.add(TweenMax.to(grunge, 2, {
+            opacity: 1
+          })).to([tuesImgGrey], 1, {
+            opacity: 0
+          });
+        }
+        if (counter < numberRainfall) {
+          setTimeout(function() {
+            createRainfall();
+            counter++;
+            start(counter);
+          }, 100);
+        }
+      }
+
+      function createRainfall() {
+        function createNumber(url, min, max) {
+          rainingImg = new Image();
+          rainingImg.src = url;
+          rainingImg.width = 15;
+          rainingImg.style.visibility = 'visible';
+          rainingImg.style.position = 'absolute';
+          rainingImg.style.top = '0px';
+          rainingImg.style.left = getRandom(0, 1490) + 'px';
+          document.getElementById('bg').appendChild(rainingImg);
+          var tl = new TimelineMax();
+          tl.to(rainingImg, 3, {
+              top: getRandom(min, max) + 'px',
+              ease: Power3.easeOut
+            })
+            .to(rainingImg, 0.5, {
+              opacity: 0,
+              delay: 1.5
+            });
+        }
+        createNumber('https://i.imgsafe.org/69e0fec10d.png', 245, 280);
+        createNumber('http://pngimg.com/uploads/number1/number1_PNG14880.png', 245, 275);
+      }
+    }
+
+    function getRandom(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+    // var tuesImgGrey = document.getElementById('tues-image-grey'),
+    //     grunge = document.getElementById('grunge-effect'),
+    //     org = document.getElementById('tues-image');
+    // // logo = document.getElementById('logo'),
+    // // timelinelite = document.getElementById('timelinelite'),
+    // // tagline = document.getElementById('tagline');
+    // tuesImgGrey.style.visibility = 'visible';
+    // org.style.visibility = 'visible';
+    // grunge.style.visibility = 'visible';
+    // tuesImgGrey.style.opacity = 0;
+    // grunge.style.opacity = 0;
+    function secondFrame() {
+      var tl = new TimelineMax({
+        onComplete: animateText
+      });
+      TweenMax.to(grunge, 0.5, {
+        opacity: 0,
+      });
+      TweenMax.to('#bg', 0.5, {
+        opacity: 0,
+        visibility: 'hidden',
+        display: 'none'
+      });
+      tl.to("#frame2", 0.5, {
+        opacity: 1,
+        display: 'block'
+      }).to("#frame2", 0.5, {
+        backgroundColor: 'black'
+      });
+
+      function animateText() {    
+        var logo = $("#logo"),
+          restartBtn = $("#restartBtn"),
+          txtContainer = $("#txtContainer");        
+        var txt, tl;                                             
+        function splitText(phrase, leftposition, topposition) {  
+          var prevLetter, sentence, sentence = phrase.split("");        
+          textContainer = document.getElementById('txtContainer');
+          textContainer.style.left = leftposition + 'px';
+          textContainer.style.top = topposition + 'px';
+          textContainer.innerHTML = '';
+          textContainer.innerText = '';
+          $.each(sentence, function(index, val) {            
+            if (val === " ") {                
+              val = "&nbsp;";            
+            }            
+            var letter = $("<div/>", {                        
+              id: "txt" + index            
+            }).addClass('txt').html(val).appendTo(txtContainer);                 
+            if (prevLetter) {                
+              // + 15 will add
+              $(letter).css("left", ($(prevLetter).position().left + $(letter).width()) + "px");            
+            };            
+            prevLetter = letter;        
+          });        
+          txt = $(".txt");    
+        }           
+        function buildTimeline() {                 
+          TweenLite.set(txtContainer, {
+            perspective: 500
+          });                 
+          tl = new TimelineMax({
+            repeat: 1,
+            repeatDelay: 1,
+            yoyo: true,
+            onComplete: buildFrame2
+          });            
+          tl.staggerFrom(txt, 0.4, {
+            alpha: 0
+          }, 0.06, "textEffect");        
+          tl.staggerFrom(txt, 0.8, {
+              rotationY: "-270deg",
+              top: 80,
+              transformOrigin: "50% 50% -80",
+              ease: Back.easeOut
+            },
+            0.06, "textEffect");       
+        };
+
+        function buildTimeline2() {                 
+          TweenLite.set(txtContainer, {
+            perspective: 500
+          });                 
+          var tl1 = new TimelineMax({
+            repeat: 1,
+            repeatDelay: 1,
+            yoyo: true,
+            onComplete: buildFrame3
+          });              
+          tl1.staggerTo(txt, 0.6, {
+            rotationX: "360deg",
+            color: "#90e500",
+            transformOrigin: "50% 50% 10"
+          }, 0.02);       
+        };
+
+        function buildTimeline3() { 
+          TweenLite.set(txtContainer, {
+            perspective: 500
+          });                 
+          var tl2 = new TimelineMax({
+            repeat: 1,
+            repeatDelay: 1,
+            yoyo: true,
+            onComplete: lastFrame
+          });     
+          tl2.staggerFrom(txt, 0.2, {
+            alpha: 0,
+          }, 0.02, "textEffect"); 
+        };
+
+        function buildFrame2() {
+          splitText("Come to check out our awesome school !!!", 200, 60);  
+          buildTimeline2();
+        }
+
+        function buildFrame3() {
+          splitText("Welcome on the 10th September! We can't wait to meet you!", 12, 60);  
+          buildTimeline3();
+        }
+
+        function init() {        
+          splitText("Because coding is fun !!!", 400, 60);        
+          buildTimeline();        
+          TweenLite.set($("#demoBackground"), {
+            visibility: "visible"
+          });    
+        }            
+        init();
+      }
+    }
+
+    function lastFrame() {
+      var txt;
+      CSSPlugin.defaultTransformPerspective = 400;
+      var playBtn = $("#playBtn"),
+        pauseBtn = $("#pauseBtn"),
+        time = $("#time"),
+        progress = $("#progress"),
+        timeScale = $("#timeScale"),
+        buttons = [playBtn, pauseBtn];
+      TweenMax.to("#frame2", 0.5, {
+        opacity: 0,
+        display: 'none',
+      });    
+      TweenMax.to("#demo", 0.5, {
+        visibility: "visible",
+        opacity: 1,
+        delay: 0.5
+      });
+      tl = new TimelineMax({
+          onUpdate: updateSlider,
+        })
+        .from("#timeline_txt", 0.6, {
+          y: -30,
+          opacity: 0
+        })
+        .from("#lite_txt", 0.6, {
+          y: 30,
+          opacity: 0
+        }, "-=0.3")
+        .staggerFrom(txt, 0.4, {
+          alpha: 0
+        }, 0.06, "textEffect")
+        .staggerFrom("li", 0.2, {
+          y: 20,
+          opacity: 0
+        }, 0.1)
+        .set(buttons, {
+          opacity: 0.2
+        });
+      $("#progressSlider").slider({
+        range: false,
+        min: 0,
+        max: 1,
+        step: .001,
+        slide: function(event, ui) {
+          tl.progress(ui.value).pause();
+        }
+      });
+
+      function updateSlider() {
+        $("#progressSlider").slider("value", tl.progress());
+        time.html(tl.time().toFixed(2));
+        progress.html(tl.progress().toFixed(2));
+      }
+      $("#playBtn").on("click", function() {
+        //Play the timeline forward from the current position.
+        //If tween is complete, play() will have no effect
+        tl.play();
+      });
+      $("#pauseBtn").on("click", function() {
+        tl.pause();
+      });
+      $("#reverseBtn").on("click", function() {
+        tl.reverse();
+      });
+      $("#timeScaleSlider").slider({
+        value: 1,
+        range: false,
+        min: 0.25,
+        max: 4,
+        step: 0.25,
+        slide: function(event, ui) {
+          tl.timeScale(ui.value);
+          timeScale.html(ui.value);
+        },
+        change: function() {
+          if (tl.paused()) {
+            tl.resume();
+          }
+          if (tl.progress() == 1) {
+            tl.restart();
+          }
+          if (tl.reversed() && tl.progress() === 0) {
+            tl.restart();
+          }
+        }
+      });
+    }
+  };
+
+  </script>
+</body>
+
+</html>
